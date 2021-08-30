@@ -8,6 +8,7 @@ import {
   Icon,
   chakra,
   Tooltip,
+  VStack,
 } from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
 
@@ -21,7 +22,9 @@ const data = {
   numReviews: 34,
 };
 
-function ReviewCard() {
+function ReviewCard(props) {
+  const parkInfo = props.parkInfo;
+
   return (
     <Flex p={50} w="full" alignItems="center" justifyContent="center">
       <Box
@@ -31,6 +34,7 @@ function ReviewCard() {
         rounded="lg"
         shadow="lg"
         position="relative"
+        pb="2"
       >
         {data.isNew && (
           <Circle
@@ -43,33 +47,32 @@ function ReviewCard() {
         )}
 
         <Image
-          src={data.imageURL}
+          boxSize="sm"
+          objectFit="cover"
+          src={parkInfo.images[0].url}
           alt={`Picture of ${data.name}`}
           roundedTop="lg"
         />
-
-        <Box p="6">
-          <Flex mt="1" justifyContent="space-between" alignContent="center">
-            <Box
-              fontSize="2xl"
-              fontWeight="semibold"
-              as="h4"
-              lineHeight="tight"
-              isTruncated
-            >
-              {data.name}
+        <VStack>
+          <Flex justifyContent="space-between" alignContent="center" mt="2">
+            <Box fontSize="sm" color={useColorModeValue("gray.800", "white")}>
+              {parkInfo.addresses[0].city}, {parkInfo.addresses[0].stateCode}
             </Box>
           </Flex>
-
-          <Flex justifyContent="space-between" alignContent="center">
-            <Box color={useColorModeValue("gray.800", "white")}>
-              <Box as="span" color={"gray.600"} fontSize="lg">
-                £
+          <Box>
+            <Flex mt="0" justifyContent="space-between" alignContent="center">
+              <Box
+                fontSize="2xl"
+                fontWeight="semibold"
+                as="h4"
+                lineHeight="tight"
+                // isTruncated
+              >
+                {parkInfo.fullName}
               </Box>
-              {data.price.toFixed(2)}
-            </Box>
-          </Flex>
-        </Box>
+            </Flex>
+          </Box>
+        </VStack>
       </Box>
     </Flex>
   );
