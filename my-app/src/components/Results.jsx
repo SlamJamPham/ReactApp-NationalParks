@@ -2,33 +2,17 @@ import ResultCard from "./ResultCard";
 import Slider from "react-slick";
 import React, { useState, useEffect } from "react";
 import "./Results.css";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import API from "../services/infoAPI";
-import { withRouter } from "react-router-dom";
 import { Link } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import ParkCard from "./ParkInfo";
+import { NextArrow, PrevArrow } from "./SliderArrows";
 
 function Results(props) {
-  const NextArrow = ({ onClick }) => {
-    return (
-      <div className="arrow next" onClick={onClick}>
-        <FaArrowRight />
-      </div>
-    );
-  };
-
-  const PrevArrow = ({ onClick }) => {
-    return (
-      <div className="arrow prev" onClick={onClick}>
-        <FaArrowLeft />
-      </div>
-    );
-  };
-
-  const [imageIndex, setImageIndex] = useState(0);
   const [parkInfo, setParkInfo] = useState([]);
+  const [modalInfo, setModalInfo] = useState([]);
   const [fetching, setfetching] = useState(true);
+  const [imageIndex, setImageIndex] = useState(0);
 
   const stateCode = props.match.params.state;
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -38,7 +22,8 @@ function Results(props) {
     async function fetchData() {
       const results = await API.get(stateCode);
       setParkInfo(results);
-      console.log(results);
+      setModalInfo(results[0]);
+      // console.log(results);
       setfetching(false);
     }
     fetchData();
@@ -61,20 +46,32 @@ function Results(props) {
       {fetching ? (
         <div>loooking </div>
       ) : (
-        <Slider {...settings}>
-          {parkInfo.map((info, idx) => (
-            <div
-              key={info.id}
-              className={idx === imageIndex ? "slide activeSlide" : "slide"}
-            >
-              <Link onClick={onOpen}>
-                <ResultCard key={info.id} parkInfo={info} />
-              </Link>
-            </div>
-          ))}
-        </Slider>
+        <div>
+          <Slider {...settings}>
+            {parkInfo.map((info, idx) => (
+              <div
+                key={info.id}
+                className={idx === imageIndex ? "slide activeSlide" : "slide"}
+              >
+                <Link
+                  onClick={() => {
+                    onOpen();
+                    setModalInfo(info);
+                  }}
+                >
+                  <ResultCard key={info.id} parkInfo={info} />
+                </Link>
+              </div>
+            ))}
+          </Slider>
+          <ParkCard
+            modalInfo={modalInfo}
+            isOpen={isOpen}
+            onOpen={onOpen}
+            onClose={onClose}
+          ></ParkCard>
+        </div>
       )}
-      <ParkCard isOpen={isOpen} onOpen={onOpen} onClose={onClose}></ParkCard>
     </div>
   );
 }

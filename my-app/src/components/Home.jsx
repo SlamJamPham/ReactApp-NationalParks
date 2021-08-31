@@ -1,28 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../App.css";
 import USAMap from "react-usa-map";
 import { useHistory } from "react-router-dom";
-import {
-  Box,
-  Button,
-  Center,
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Image,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Link,
-  LinkBox,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, Stack } from "@chakra-ui/react";
 
 const Home = ({ setState }) => {
   const history = useHistory();
-  const [selected, setSelected] = useState();
 
   const mapHandler = (event) => {
     history.push(`/search/${event.target.dataset.name}`);

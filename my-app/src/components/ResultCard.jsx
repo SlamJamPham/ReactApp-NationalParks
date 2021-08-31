@@ -3,14 +3,9 @@ import {
   Circle,
   Box,
   Image,
-  Badge,
   useColorModeValue,
-  Icon,
-  chakra,
-  Tooltip,
   VStack,
 } from "@chakra-ui/react";
-import { FiShoppingCart } from "react-icons/fi";
 
 const data = {
   isNew: true,
@@ -28,7 +23,7 @@ function ReviewCard(props) {
   return (
     <Flex p={50} w="full" alignItems="center" justifyContent="center">
       <Box
-        bg={useColorModeValue("white", "gray.800")}
+        bg={useColorModeValue("gray.200", "gray.800")}
         maxW="sm"
         borderWidth="1px"
         rounded="lg"
@@ -36,16 +31,6 @@ function ReviewCard(props) {
         position="relative"
         pb="2"
       >
-        {data.isNew && (
-          <Circle
-            size="10px"
-            position="absolute"
-            top={2}
-            right={2}
-            bg="red.200"
-          />
-        )}
-
         <Image
           boxSize="sm"
           objectFit="cover"
