@@ -6,6 +6,8 @@ import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import API from "../services/infoAPI";
 import { withRouter } from "react-router-dom";
 import { Link } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
+import ParkCard from "./ParkInfo";
 
 function Results(props) {
   const NextArrow = ({ onClick }) => {
@@ -27,7 +29,9 @@ function Results(props) {
   const [imageIndex, setImageIndex] = useState(0);
   const [parkInfo, setParkInfo] = useState([]);
   const [fetching, setfetching] = useState(true);
+
   const stateCode = props.match.params.state;
+  const { isOpen, onOpen, onClose } = useDisclosure();
   // console.log(props);
 
   useEffect(() => {
@@ -59,14 +63,18 @@ function Results(props) {
       ) : (
         <Slider {...settings}>
           {parkInfo.map((info, idx) => (
-            <div className={idx === imageIndex ? "slide activeSlide" : "slide"}>
-              <Link>
+            <div
+              key={info.id}
+              className={idx === imageIndex ? "slide activeSlide" : "slide"}
+            >
+              <Link onClick={onOpen}>
                 <ResultCard key={info.id} parkInfo={info} />
               </Link>
             </div>
           ))}
         </Slider>
       )}
+      <ParkCard isOpen={isOpen} onOpen={onOpen} onClose={onClose}></ParkCard>
     </div>
   );
 }
