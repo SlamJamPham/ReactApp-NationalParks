@@ -1,6 +1,8 @@
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Results from "./components/Results";
+import footerImage from "./footerImg.png";
+import { Box, Flex, Stack, Image } from "@chakra-ui/react";
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/search/:state" component={Results} />
       </Switch>
+      <Image className="footer" src={footerImage} objectFit="cover" />
     </div>
   );
 }

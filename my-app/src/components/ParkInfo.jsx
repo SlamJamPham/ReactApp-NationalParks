@@ -25,8 +25,8 @@ function ParkCard(props) {
   const { isOpen, onOpen, onClose } = props;
 
   const parkInfo = props.modalInfo;
-  console.log(props);
   const { line1, city, stateCode, postalCode } = parkInfo.addresses[0];
+  console.log(parkInfo);
 
   const settings = {
     dots: true,
@@ -41,9 +41,12 @@ function ParkCard(props) {
 
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
-
-      <Modal size="4xl" isOpen={isOpen} onClose={onClose}>
+      <Modal
+        scrollBehavior="inside"
+        size="4xl"
+        isOpen={isOpen}
+        onClose={onClose}
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{parkInfo.fullName}</ModalHeader>
@@ -52,6 +55,7 @@ function ParkCard(props) {
             <Slider {...settings}>
               {parkInfo.images.map((image) => (
                 <Image
+                  key={image.url}
                   boxSize="sm"
                   objectFit="cover"
                   src={image.url}
@@ -111,10 +115,10 @@ function ParkCard(props) {
                   />{" "}
                   Entrance Fees{" "}
                   {parkInfo.entranceFees.map((fee) => (
-                    <div>
+                    <div key={parkInfo.id}>
                       {fee.cost == 0
                         ? `${fee.title}`
-                        : `${fee.title}: ${fee.cost}`}
+                        : `${fee.title}: $${fee.cost}`}
                     </div>
                   ))}
                 </span>

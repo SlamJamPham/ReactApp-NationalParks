@@ -2,7 +2,9 @@ import React from "react";
 import "../App.css";
 import USAMap from "react-usa-map";
 import { useHistory } from "react-router-dom";
-import { Box, Flex, Stack } from "@chakra-ui/react";
+import { Box, Flex, Stack, Image } from "@chakra-ui/react";
+import { SearchLogo } from "./SearchLogo";
+import footerImage from "../footerImg.png";
 
 const Home = ({ setState }) => {
   const history = useHistory();
@@ -12,12 +14,14 @@ const Home = ({ setState }) => {
   };
 
   return (
-    <Flex width="full" justifyContent="center">
+    <Flex className="centered" align="center" justifyContent="center">
       <Stack>
-        <p>legs go</p>
-        <Box align="center" borderWidth={5} px={4} width="full" borderadius={4}>
+        <Box>
+          <SearchLogo />
+        </Box>
+        <Box align="center" width="full" borderadius={4}>
           <Box justifyContent="center">
-            <USAMap onClick={mapHandler} />
+            <USAMap defaultFill="#7E6E5D" title="cool" onClick={mapHandler} />
           </Box>
         </Box>
       </Stack>

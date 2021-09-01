@@ -6,34 +6,54 @@ path:hover {
   cursor: pointer;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  height: 10vmin;
+  display: inline-block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.footer {
+  position: absolute;
+  bottom: -3%;
+  width: 100%;
+  z-index: -3;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#root {
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* use viewport-relative units to cover page fully */
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* include border and padding in element width and height */
+* {
+  box-sizing: border-box;
+}
+
+.centered {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  /* background-color: blue; */
 }
 
 @keyframes App-logo-spin {
@@ -43,13 +63,4 @@ path:hover {
   to {
     transform: rotate(360deg);
   }
-}
-
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
-  background: blue;
 }
