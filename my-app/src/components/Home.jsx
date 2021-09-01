@@ -4,7 +4,6 @@ import USAMap from "react-usa-map";
 import { useHistory } from "react-router-dom";
 import { Box, Flex, Stack, Image } from "@chakra-ui/react";
 import { SearchLogo } from "./SearchLogo";
-import footerImage from "../footerImg.png";
 
 const Home = ({ setState }) => {
   const history = useHistory();

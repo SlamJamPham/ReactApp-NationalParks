@@ -1,8 +1,8 @@
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import Results from "./components/Results";
-import footerImage from "./footerImg.png";
-import { Box, Flex, Stack, Image } from "@chakra-ui/react";
+import footerImage from "./images/footerImg.png";
+import { Image } from "@chakra-ui/react";
 
 function App() {
   return (
