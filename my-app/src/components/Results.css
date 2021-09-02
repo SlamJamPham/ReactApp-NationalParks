@@ -3,6 +3,7 @@
 
 .Results {
   margin: 10rem auto;
+  overflow-y: scroll;
 }
 
 .slide {
