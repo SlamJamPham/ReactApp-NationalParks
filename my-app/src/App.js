@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/ReactApp-NationalParks" component={Home} />
         <Route exact path="/search/:state" component={Results} />
       </Switch>
       <Image className="footer" src={footerImage} objectFit="cover" />
