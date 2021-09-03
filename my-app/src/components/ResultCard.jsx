@@ -1,11 +1,4 @@
-import {
-  Flex,
-  Circle,
-  Box,
-  Image,
-  useColorModeValue,
-  VStack,
-} from "@chakra-ui/react";
+import { Flex, Box, Image, useColorModeValue, VStack } from "@chakra-ui/react";
 
 const data = {
   isNew: true,
@@ -51,7 +44,6 @@ function ReviewCard(props) {
                 fontWeight="semibold"
                 as="h4"
                 lineHeight="tight"
-                // isTruncated
               >
                 {parkInfo.fullName}
               </Box>

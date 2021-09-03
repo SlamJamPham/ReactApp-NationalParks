@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import "./Results.css";
 import { Link } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
-import ParkCard from "./ParkInfo";
+import ParkCard from "./ParkCard";
 import { NextArrow, PrevArrow } from "./SliderArrows";
 
 const CaorouselView = (props) => {
@@ -12,7 +12,7 @@ const CaorouselView = (props) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [modalInfo, setModalInfo] = useState(props.modalInfo);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  console.log(modalInfo);
+  // console.log(modalInfo);
 
   const settings = {
     infinite: true,

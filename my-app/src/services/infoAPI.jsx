@@ -7,7 +7,7 @@ const BASE_API_URL =
 const API = {
   get: async (state) => {
     const path = BASE_API_URL + "&stateCode=" + state + "&api_key=" + API_KEY;
-    console.log(path);
+    // console.log(path);
     const res = await axios.get(path);
 
     return res.data.data;

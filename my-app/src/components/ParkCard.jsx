@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Modal,
@@ -11,7 +11,6 @@ import {
   Link,
   Stack,
   Box,
-  HStack,
   Icon,
   Image,
 } from "@chakra-ui/react";
@@ -26,7 +25,7 @@ function ParkCard(props) {
 
   const parkInfo = props.modalInfo;
   const { line1, city, stateCode, postalCode } = parkInfo.addresses[0];
-  console.log(parkInfo);
+  // console.log(parkInfo);
 
   const settings = {
     dots: true,
@@ -116,7 +115,7 @@ function ParkCard(props) {
                   Entrance Fees{" "}
                   {parkInfo.entranceFees.map((fee) => (
                     <div key={parkInfo.id}>
-                      {fee.cost == 0
+                      {fee.cost === 0
                         ? `${fee.title}`
                         : `${fee.title}: $${fee.cost}`}
                     </div>

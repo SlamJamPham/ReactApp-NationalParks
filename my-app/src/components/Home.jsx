@@ -2,7 +2,7 @@ import React from "react";
 import "../App.css";
 import USAMap from "react-usa-map";
 import { useHistory } from "react-router-dom";
-import { Box, Flex, Stack, Image } from "@chakra-ui/react";
+import { Box, Flex, Stack } from "@chakra-ui/react";
 import { SearchLogo } from "./SearchLogo";
 
 const Home = ({ setState }) => {

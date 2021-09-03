@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./Results.css";
 import { Link } from "@chakra-ui/react";
 import { useDisclosure, Grid, GridItem } from "@chakra-ui/react";
-import ParkCard from "./ParkInfo";
+import ParkCard from "./ParkCard";
 
 const ListView = (props) => {
   const parkInfo = props.parkInfo;
