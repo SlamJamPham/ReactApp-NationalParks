@@ -21,15 +21,14 @@ import { Form, Formik } from "formik";
 
 function ReportCard(props) {
   const { isOpen, onOpen, onClose } = props;
-  const [emailError, setEmailError] = useState(
-    "Email must be longer than 3 characters"
-  );
+  const [emailError, setEmailError] = useState("Invalid Email");
 
   const validateEmail = (email) => {
+    console.log(email);
     setEmailError(
-      email.target.value.length > 3
+      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
         ? null
-        : "Email must be longer than 3 characters"
+        : "Invalid Email"
     );
   };
 
@@ -67,7 +66,7 @@ function ReportCard(props) {
                       name="email"
                       onChange={(event) => {
                         formikProps.handleChange(event);
-                        validateEmail(event);
+                        validateEmail(event.target.value);
                       }}
                       isInvalid={emailError != null}
                       errorBorderColor={

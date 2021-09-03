@@ -25,9 +25,7 @@ describe("Report Form Component", () => {
     });
 
     await waitFor(() =>
-      expect(
-        screen.getByText("Email must be longer than 3 characters")
-      ).toBeInTheDocument()
+      expect(screen.getByText("Invalid Email")).toBeInTheDocument()
     );
   });
 
@@ -41,9 +39,7 @@ describe("Report Form Component", () => {
     });
 
     await waitFor(() =>
-      expect(
-        screen.queryByText("Email must be longer than 3 characters")
-      ).not.toBeInTheDocument()
+      expect(screen.queryByText("Invalid Email")).not.toBeInTheDocument()
     );
   });
 
