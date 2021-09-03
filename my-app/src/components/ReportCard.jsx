@@ -17,7 +17,7 @@ import {
   Textarea,
   Text,
 } from "@chakra-ui/react";
-import { Form, Formik, FormikProps } from "formik";
+import { Form, Formik } from "formik";
 
 function ReportCard(props) {
   const { isOpen, onOpen, onClose } = props;
@@ -31,6 +31,15 @@ function ReportCard(props) {
         ? null
         : "Email must be longer than 3 characters"
     );
+  };
+
+  const handleSubmit = async (values, actions) => {
+    setTimeout(() => {
+      alert(JSON.stringify(values, null, 2));
+      actions.setSubmitting(false);
+    }, 1000);
+    console.log(values);
+    props.onSubmit(values);
   };
 
   return (
@@ -48,12 +57,7 @@ function ReportCard(props) {
           <ModalBody>
             <Formik
               initialValues={{ email: "", field: "", parkName: "", desc: "" }}
-              onSubmit={(values, actions) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
-                  actions.setSubmitting(false);
-                }, 1000);
-              }}
+              onSubmit={handleSubmit}
             >
               {(formikProps) => (
                 <Form>
@@ -85,9 +89,10 @@ function ReportCard(props) {
                       </FormControl>
                     </Box>
                     <Box w="50%">
-                      <FormControl isRequired>
+                      <FormControl>
                         <FormLabel>Field</FormLabel>
                         <Select
+                          data-testid="selector"
                           name="field"
                           onChange={formikProps.handleChange}
                           placeholder="Select Field with Error"
@@ -110,7 +115,12 @@ function ReportCard(props) {
                     </FormControl>
                   </Box>
                   <HStack pt="3" float="right">
-                    <Button colorScheme="blue" mr={3} type="submit">
+                    <Button
+                      colorScheme="blue"
+                      mr={3}
+                      data-testid="submitButton"
+                      type="submit"
+                    >
                       Submit
                     </Button>
                     <Button colorScheme="blue" mr={3} onClick={onClose}>

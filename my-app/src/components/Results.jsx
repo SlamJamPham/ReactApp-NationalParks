@@ -35,7 +35,7 @@ function Results(props) {
       setfetching(false);
     }
     fetchData();
-  }, []);
+  }, [stateCode]);
 
   return (
     <div>

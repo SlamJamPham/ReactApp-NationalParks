@@ -1,5 +1,4 @@
-import axios from "axios";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ResultCard from "../components/ResultCard";
 import mockData from "../services/mockData";
 
