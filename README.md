@@ -12,6 +12,8 @@ API Layer: ./src/services/infoAPI.jsx
 
 Testing: ./src/__tests__
 
+NOTE: React-USA-Map uses a older version of react so I used "npm install --force" to force install it, the functionality still works. I'm not sure if that is best pratice or if that may cause issue but it is a simple library to have a clickable US map.
+
 ## Component Layout
 
 * Home
