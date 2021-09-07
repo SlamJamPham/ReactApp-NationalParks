@@ -17,7 +17,7 @@ const ListView = (props) => {
       </p>
       <Grid templateColumns="repeat(3, 1fr)" gap={2}>
         {parkInfo.map((info, idx) => (
-          <GridItem>
+          <GridItem key={idx}>
             <Link
               onClick={() => {
                 onOpen();
