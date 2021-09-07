@@ -24,7 +24,6 @@ function ReportCard(props) {
   const [emailError, setEmailError] = useState("Invalid Email");
 
   const validateEmail = (email) => {
-    console.log(email);
     setEmailError(
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
         ? null
@@ -37,7 +36,6 @@ function ReportCard(props) {
       alert(JSON.stringify(values, null, 2));
       actions.setSubmitting(false);
     }, 1000);
-    console.log(values);
     props.onSubmit(values);
   };
 
